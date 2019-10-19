@@ -5,10 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {Routes, RouterModule} from '@angular/router'
 import { UserHomeComponent } from './app.userhomecomponent';
+import { UpdateUserComponent } from './app.updateusercomponent';
 
 const myroute:Routes = [
     { path: '', redirectTo: 'user', pathMatch:'full'},
-    { path: 'user', component: UserHomeComponent}
+    { path: 'user', component: UserHomeComponent},
+    { path: 'updateuser', component: UpdateUserComponent}
 ];
 
 @NgModule({
@@ -19,7 +21,7 @@ const myroute:Routes = [
         RouterModule.forRoot(myroute)
     ],
     declarations: [
-        AppComponent, UserHomeComponent
+        AppComponent, UserHomeComponent, UpdateUserComponent
 		], 
     providers: [ ],
     bootstrap: [AppComponent]
