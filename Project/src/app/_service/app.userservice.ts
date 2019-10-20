@@ -14,4 +14,8 @@ export class UserService{
         form.append("userPassword",user.userPassword);
         return this.myhttp.put("http://localhost:9088/updateusersubmit",form);
     }
+
+    assignTest(assign:any){
+        return this.myhttp.post("http://localhost:9088/assign", assign);
+    }
 }
