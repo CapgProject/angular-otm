@@ -12,6 +12,9 @@ import {CommonModule} from '@angular/common';
 import { AdminHomeComponent } from './app.adminhomecomponent';
 import { HomeComponent } from './app.homeComponent';
 import { AssignTestComponent } from './app.assigntestcomponent';
+import { UpdateAdminComponent } from './app.updateadmincomponent';
+import { ListUserComponent } from './app.listusercomponent';
+import { GiveTestComponent } from './app.givetestcomponent';
 
 const routes:Routes = [
     { path: '', redirectTo: 'home', pathMatch:'full'},
@@ -21,6 +24,9 @@ const routes:Routes = [
     { path: 'admin', component: AdminHomeComponent},
     { path: 'home', component: HomeComponent},
     { path: 'assign', component: AssignTestComponent},
+    { path: 'updateadmin', component: UpdateAdminComponent},
+    { path: 'listusers', component: ListUserComponent},
+    { path: 'givetest', component:GiveTestComponent }
     
 ];
 
@@ -31,8 +37,7 @@ const routes:Routes = [
         
     ],
     declarations: [
-
-        AppComponent, UserHomeComponent, UpdateUserComponent, AddQuestion, AdminHomeComponent, HomeComponent, AssignTestComponent
+        AppComponent, UserHomeComponent, UpdateUserComponent, AddQuestion, AdminHomeComponent, HomeComponent, AssignTestComponent,UpdateAdminComponent, ListUserComponent, GiveTestComponent
 		], 
 
     providers: [ ],
