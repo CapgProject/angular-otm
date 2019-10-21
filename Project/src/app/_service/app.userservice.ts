@@ -26,4 +26,5 @@ export class UserService{
     getQuestions(){
         return this.myhttp.get("http://localhost:9088/givetest?userid=2");
     }
+
 }

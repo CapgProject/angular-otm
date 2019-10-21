@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import {FileUploadModule} from 'ng2-file-upload';
 import {Routes, RouterModule} from '@angular/router'
 import { UserHomeComponent } from './app.userhomecomponent';
 import { UpdateUserComponent } from './app.updateusercomponent';
@@ -16,6 +16,10 @@ import { UpdateAdminComponent } from './app.updateadmincomponent';
 import { ListUserComponent } from './app.listusercomponent';
 import { GiveTestComponent } from './app.givetestcomponent';
 
+import { DeleteQuestion } from './app.deletequestioncomponent';
+import { UpdateQuestion } from './app.updatequestion';
+import { ShowQuestion } from './app.showquestioncomponent';
+
 const routes:Routes = [
     { path: '', redirectTo: 'home', pathMatch:'full'},
     { path: 'user', component: UserHomeComponent},
@@ -26,19 +30,23 @@ const routes:Routes = [
     { path: 'assign', component: AssignTestComponent},
     { path: 'updateadmin', component: UpdateAdminComponent},
     { path: 'listusers', component: ListUserComponent},
-    { path: 'givetest', component:GiveTestComponent }
+    { path: 'givetest', component:GiveTestComponent },
+    { path: 'deletequestion', component:DeleteQuestion},
+    { path: 'showquestion', component: ShowQuestion},
+    { path: 'updatequestion', component:UpdateQuestion}
     
+
 ];
 
 
 @NgModule({
     imports: [
-        BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, CommonModule, RouterModule.forRoot(routes)
-        
+        BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, CommonModule, RouterModule.forRoot(routes), FileUploadModule
     ],
     declarations: [
-        AppComponent, UserHomeComponent, UpdateUserComponent, AddQuestion, AdminHomeComponent, HomeComponent, AssignTestComponent,UpdateAdminComponent, ListUserComponent, GiveTestComponent
+        AppComponent, UserHomeComponent, UpdateUserComponent, AddQuestion, AdminHomeComponent, HomeComponent, AssignTestComponent,UpdateAdminComponent, ListUserComponent, GiveTestComponent, ShowQuestion, DeleteQuestion, UpdateQuestion
 		], 
+
 
     providers: [ ],
     bootstrap: [AppComponent]

@@ -1,13 +1,29 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, Validators, FormGroup } from "@angular/forms";
+import { Question } from "./_model/app.question";
+import { QuestionService } from "./_service/app.questionservice";
+import { FileUploader } from "ng2-file-upload";
 
 @Component({
     selector:'addquestion',
     templateUrl:'app.addquestion.html'
 })
 export class AddQuestion implements OnInit{ 
+    uploader:FileUploader;
     buttonVal:boolean=false;
-    questionForm:FormGroup;
+    question:Question={
+        questionId:null,
+        questionTitle:"",
+        questionAnswer:null,
+        questionMarks:null,
+        questionOptions:[]
+    };
+    testid:number;
+    exfile:any;
+    testId:number;
+
+    ngOnInit{
+        const headers = [{name:'Acc'}]
+    }
 
     changeButtonValue(value:boolean){
         if(value==true){
@@ -18,11 +34,16 @@ export class AddQuestion implements OnInit{
         }
     }
 
-    constructor(private fb:FormBuilder){}
+    constructor(private service:QuestionService){}
 
-    ngOnInit(){
-        this.questionForm = this.fb.group({
-            testid:['',Validators.required]
-        })
+    addThroughExcel(id:number,file:any){
+        alert(id);
+        alert(file);
+        this.service.addQuestionExcel(id,file).subscribe((data)=>console.log(data));
+    }
+
+    addThroughForm(){
+        alert(this.question.questionMarks);
+        this.service.addQuestionForm(this.testId, this.question).subscribe((data)=>console.log(data));
     }
 }

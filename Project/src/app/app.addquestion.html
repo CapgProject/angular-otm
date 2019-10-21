@@ -119,28 +119,24 @@
             </div>
             <br><br>
             <div *ngIf="buttonVal==false else questionformblock">
-                <form [formGroup]="questionForm" (ngSubmit)="onSubmit()" class="form-horizontal">
-                    <div class="form-group" [ngClass]="{'has-error':questionForm.get('testid').errors && (questionForm.get('testid').touched || questionForm.get('testid').dirty)}">
+                <form enctype="multipart/form-data">
+                    <div>
                     <div class = "row">
                         <div class="text-center col-md-6 col-lg-6">
-                            <label class="control-label">Enter the Test Id:</label>
+                            Enter the Test Id:
                         </div>
                         <div class="col-md-4 col-lg-4">
-                            <input type="text" name="testid" id="testid" formControlName="testid" class="form-control"/>
-                            <span class="help-block" *ngIf="questionForm.get('testid').errors && (questionForm.get('testid').touched || questionForm.get('testid').dirty)">
-                                <span *ngIf="questionForm.get('testid').errors.required">Id field cannot be empty!</span>
-                            </span>
+                            <input type="text" name="testid" [(ngModel)]="testid"/>
                         </div>
                     </div>
                     </div>
-                    <br><br>
+                    <br>
                     <div class = "row">
                         <div class="text-center col-md-6 col-lg-6">
                             Input File:
                         </div>
                         <div class="col-md-4 col-lg-4">
-                            <input type= "file" name = "exfile" id="file" accept=".xlsx"/>
-                            <span id="file_error" style="color:red"></span>
+                            <input #fileInput type= "file" name="exfile" ng2FileSelect [uploader] ="uploader" [(ngModel)] = "exfile" accept=".xlsx"/>
                         </div>
                     </div>
                     <br>    
@@ -148,14 +144,58 @@
                         <div class="text-center col-md-6 col-lg-6">
                         </div>
                         <div class="col-md-4 col-lg-4">
-                            <button type="submit" class = "btn btn-primary">Add Question</button>
+                            <button type="submit" class = "btn btn-primary" (click)="addThroughExcel(testid,exfile)">Add Question</button>
                         </div>
                     </div>
                     <br>
                 </form>   
             </div>
             <ng-template #questionformblock>
-
+                <div>
+                    <form>
+                        <div class="row">
+                            <div class="text-center col-md-6 col-lg-6">Enter Test Id:</div>
+                            <div class="col-md-4 col-lg-4">
+                                <input type="text" name="testId" [(ngModel)]="testId" />
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="text-center col-md-6 col-lg-6">Question Title:</div>
+                            <div class="col-md-4 col-lg-4">
+                                <input type="text" name="questiontitle" [(ngModel)]="question.questionTitle" />
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="text-center col-md-6 col-lg-6">Question Options :</div>
+                            <div class="col-md-4 col-lg-4">
+                                <input type="text" name="questionoptions" [(ngModel)]="question.questionOptions" />
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="text-center col-md-6 col-lg-6">Question Answer :</div>
+                            <div class="col-md-4 col-lg-4">
+                                <input type="text" name="questionanswer" [(ngModel)]="question.questionAnswer" />
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="text-center col-md-6 col-lg-6">Question Marks :</div>
+                            <div class="col-md-4 col-lg-4">
+                                <input type="text" name="questionmarks" [(ngModel)]="question.questionMarks" />
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="row">
+                            <div class="text-center col-md-6 col-lg-6"></div>
+                            <div class="col-md-4 col-lg-4">
+                                <button type="submit" class="btn btn-primary" (click)="addThroughForm()">Add Question</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </ng-template>
         </div>
     </section>
