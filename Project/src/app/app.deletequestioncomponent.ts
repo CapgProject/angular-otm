@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Question } from "./_model/app.question";
-import { UserService } from "./_service/app.userservice";
+import { QuestionService } from "./_service/app.questionservice";
 
 @Component({
     selector:'deletequestion',
@@ -8,7 +8,7 @@ import { UserService } from "./_service/app.userservice";
 })
 export class DeleteQuestion implements OnInit{
 
-    constructor(private service:UserService){}
+    constructor(private service:QuestionService){}
 
     ngOnInit(){}
 
