@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, Validators, FormGroup } from "@angular/forms";
+import { Question } from "./_model/app.question";
+import { UserService } from "./_service/app.userservice";
 
 @Component({
     selector:'addquestion',
@@ -7,7 +8,16 @@ import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 })
 export class AddQuestion implements OnInit{ 
     buttonVal:boolean=false;
-    questionForm:FormGroup;
+    question:Question;
+    testid:number;
+    exfile:File;
+    testId:number;
+    // testid:number;
+    // file:File;
+    // data:any[]=[
+    //     {testid:''},
+    //     {file:''}
+    // ]
 
     changeButtonValue(value:boolean){
         if(value==true){
@@ -18,11 +28,18 @@ export class AddQuestion implements OnInit{
         }
     }
 
-    constructor(private fb:FormBuilder){}
+    constructor(private service:UserService){}
 
-    ngOnInit(){
-        this.questionForm = this.fb.group({
-            testid:['',Validators.required]
-        })
+    ngOnInit(){}
+    //model:data;
+    addThroughExcel(id:number,file:File){
+        alert(id);
+        alert(file);
+        this.service.addQuestionExcel(id,file).subscribe((data)=>console.log(data));
+    }
+
+    addThroughForm(){
+        alert(this.question);
+        this.service.addQuestionForm(this.testId, this.question).subscribe((data)=>console.log(data));
     }
 }
