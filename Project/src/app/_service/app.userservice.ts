@@ -24,7 +24,11 @@ export class UserService{
     }
 
     getQuestions(){
-        return this.myhttp.get("http://localhost:9088/givetest?userid=2");
+        return this.myhttp.get("http://localhost:9088/givetest?userid=1");
+    }
+
+    submitTest(questions:any[]){
+        return this.myhttp.put("http://localhost:9088/givetest",questions);
     }
 
 }
