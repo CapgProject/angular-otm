@@ -1,23 +1,29 @@
 import { Component, OnInit } from "@angular/core";
 import { Question } from "./_model/app.question";
-import { UserService } from "./_service/app.userservice";
+import { QuestionService } from "./_service/app.questionservice";
+import { FileUploader } from "ng2-file-upload";
 
 @Component({
     selector:'addquestion',
     templateUrl:'app.addquestion.html'
 })
 export class AddQuestion implements OnInit{ 
+    uploader:FileUploader;
     buttonVal:boolean=false;
-    question:Question;
+    question:Question={
+        questionId:null,
+        questionTitle:"",
+        questionAnswer:null,
+        questionMarks:null,
+        questionOptions:[]
+    };
     testid:number;
-    exfile:File;
+    exfile:any;
     testId:number;
-    // testid:number;
-    // file:File;
-    // data:any[]=[
-    //     {testid:''},
-    //     {file:''}
-    // ]
+
+    ngOnInit{
+        const headers = [{name:'Acc'}]
+    }
 
     changeButtonValue(value:boolean){
         if(value==true){
@@ -28,18 +34,16 @@ export class AddQuestion implements OnInit{
         }
     }
 
-    constructor(private service:UserService){}
+    constructor(private service:QuestionService){}
 
-    ngOnInit(){}
-    //model:data;
-    addThroughExcel(id:number,file:File){
+    addThroughExcel(id:number,file:any){
         alert(id);
         alert(file);
         this.service.addQuestionExcel(id,file).subscribe((data)=>console.log(data));
     }
 
     addThroughForm(){
-        alert(this.question);
+        alert(this.question.questionMarks);
         this.service.addQuestionForm(this.testId, this.question).subscribe((data)=>console.log(data));
     }
 }
