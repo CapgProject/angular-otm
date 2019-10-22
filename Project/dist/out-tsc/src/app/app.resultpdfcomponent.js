@@ -10,34 +10,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var fileSaver = require("file-saver");
 var app_userservice_1 = require("./_service/app.userservice");
-var GiveTestComponent = /** @class */ (function () {
-    function GiveTestComponent(service) {
+var ResultPdfComponent = /** @class */ (function () {
+    function ResultPdfComponent(service) {
         this.service = service;
-        this.questions = [];
-        this.num = 0;
         console.log("In Constructor");
     }
-    GiveTestComponent.prototype.ngOnInit = function () {
+    ResultPdfComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.service.getQuestions().subscribe(function (data) { return _this.questions = data; });
+        this.service.resultPdf().subscribe(function (response) {
+            var filename = response.headers.get('filename');
+            _this.saveFile(response.body, filename);
+        });
     };
-    GiveTestComponent.prototype.nextQuestion = function () {
-        alert(this.questions[this.num].chosenAnswer);
-        this.num += 1;
-        if (this.num >= this.questions.length) {
-            alert("Test Finished Successfully");
-            this.service.submitTest(this.questions).subscribe(function (data) { return console.log(data); });
-        }
+    ResultPdfComponent.prototype.saveFile = function (data, filename) {
+        var blob = new Blob([data], { type: 'text/csv; charset=utf-8' });
+        fileSaver.saveAs(blob, filename);
     };
-    GiveTestComponent = __decorate([
+    ResultPdfComponent = __decorate([
         core_1.Component({
-            selector: 'givetest',
-            templateUrl: 'app.givetest.html'
+            selector: 'example-app',
+            template: "\n  \n  "
         }),
         __metadata("design:paramtypes", [app_userservice_1.UserService])
-    ], GiveTestComponent);
-    return GiveTestComponent;
+    ], ResultPdfComponent);
+    return ResultPdfComponent;
 }());
-exports.GiveTestComponent = GiveTestComponent;
-//# sourceMappingURL=app.givetestcomponent.js.map
+exports.ResultPdfComponent = ResultPdfComponent;
+//# sourceMappingURL=app.resultpdfcomponent.js.map

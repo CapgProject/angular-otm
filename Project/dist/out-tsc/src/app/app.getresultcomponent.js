@@ -11,33 +11,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var app_userservice_1 = require("./_service/app.userservice");
-var GiveTestComponent = /** @class */ (function () {
-    function GiveTestComponent(service) {
+var fileSaver = require("file-saver");
+var GetResultComponent = /** @class */ (function () {
+    function GetResultComponent(service) {
         this.service = service;
-        this.questions = [];
-        this.num = 0;
         console.log("In Constructor");
     }
-    GiveTestComponent.prototype.ngOnInit = function () {
+    GetResultComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.service.getQuestions().subscribe(function (data) { return _this.questions = data; });
+        this.service.getResult().subscribe(function (data) { return _this.header = data; });
     };
-    GiveTestComponent.prototype.nextQuestion = function () {
-        alert(this.questions[this.num].chosenAnswer);
-        this.num += 1;
-        if (this.num >= this.questions.length) {
-            alert("Test Finished Successfully");
-            this.service.submitTest(this.questions).subscribe(function (data) { return console.log(data); });
-        }
+    GetResultComponent.prototype.resultPdf = function () {
+        var _this = this;
+        this.service.resultPdf().subscribe(function (response) {
+            var filename = response.headers.get('filename');
+            _this.saveFile(response.body);
+        });
     };
-    GiveTestComponent = __decorate([
+    GetResultComponent.prototype.saveFile = function (data) {
+        var filename = 'Result.pdf';
+        var blob = new Blob([data], { type: 'application/pdf' });
+        console.log(blob);
+        fileSaver.saveAs(blob, filename);
+    };
+    GetResultComponent = __decorate([
         core_1.Component({
-            selector: 'givetest',
-            templateUrl: 'app.givetest.html'
+            selector: 'listuser',
+            templateUrl: 'app.getresult.html'
         }),
         __metadata("design:paramtypes", [app_userservice_1.UserService])
-    ], GiveTestComponent);
-    return GiveTestComponent;
+    ], GetResultComponent);
+    return GetResultComponent;
 }());
-exports.GiveTestComponent = GiveTestComponent;
-//# sourceMappingURL=app.givetestcomponent.js.map
+exports.GetResultComponent = GetResultComponent;
+//# sourceMappingURL=app.getresultcomponent.js.map

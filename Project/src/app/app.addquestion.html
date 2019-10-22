@@ -136,7 +136,7 @@
                             Input File:
                         </div>
                         <div class="col-md-4 col-lg-4">
-                            <input #fileInput type= "file" name="exfile" ng2FileSelect [uploader] ="uploader" [(ngModel)] = "exfile" accept=".xlsx"/>
+                            <input  type= "file" id = "exfile"  (change)="getFileDetails($event)" accept=".xlsx"/>
                         </div>
                     </div>
                     <br>    
@@ -144,7 +144,7 @@
                         <div class="text-center col-md-6 col-lg-6">
                         </div>
                         <div class="col-md-4 col-lg-4">
-                            <button type="submit" class = "btn btn-primary" (click)="addThroughExcel(testid,exfile)">Add Question</button>
+                            <button type="submit" class = "btn btn-primary" (click)="uploadFiles()">Add Question</button>
                         </div>
                     </div>
                     <br>
