@@ -1,24 +1,42 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
+export class User{
+    
+    constructor(public status:string) {}
+  
+}
+
+export class JwtResponse{
+    constructor(public jwttoken:string) {}
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor() { }
+  constructor(private httpClient:HttpClient) {}
 
     authenticate(username, password) {
-        if (username === "javainuse" && password === "password") {
-            sessionStorage.setItem('username', username)
-            return true;
-        } else {
-            return false;
-        }
+        alert(password);
+        return this.httpClient.post<any>('http://localhost:9088/authenticate',{username,password}).subscribe(
+            userData => {
+                alert("hi");
+                sessionStorage.setItem('username',username);
+                let tokenStr= 'Bearer '+userData.token;
+                sessionStorage.setItem('token', tokenStr);
+                return userData;
+            }
+  
+      );
     }
+  
 
     isUserLoggedIn() {
         let user = sessionStorage.getItem('username')
-        console.log(!(user === null))
+        //console.log(!(user === null))
         return !(user === null)
     }
 

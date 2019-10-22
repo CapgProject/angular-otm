@@ -127,13 +127,13 @@
                             <div class="modal-body mx-4">
                                 <!--Body-->
                                 <div class="md-form mb-5">
-                                    <input id="username" name="username" type="text" class="form-control" />
+                                    <input id="username" name="username" type="text" [(ngModel)]="username" class="form-control" />
                                     <label data-error="wrong" data-success="right" for="Form-email1">Your
                                         Username</label> <span id="username_error_message" class="error"></span>
                                 </div>
     
                                 <div class="md-form pb-3">
-                                    <input id="password" name="password" type="password" class="form-control" />
+                                    <input id="password" name="password" type="password" [(ngModel)]="password" class="form-control" />
                                     <label data-error="wrong" data-success="right" for="Form-pass1">Your
                                         password</label> <span id="password_error_message" class="error"></span>
                                     <p class="font-small blue-text d-flex justify-content-end">
@@ -142,9 +142,7 @@
                                 </div>
     
                                 <div class="text-center mb-3">
-                                    <button type="submit"
-                                        class="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign
-                                        in</button>
+                                    <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a" (click)="checkLogin()">Signin</button>
                                 </div>
                                 <p
                                     class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">
