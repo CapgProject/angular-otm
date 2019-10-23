@@ -3,6 +3,7 @@ import { Question } from "./_model/app.question";
 import { QuestionService } from "./_service/app.questionservice";
 import { FileUploader } from "ng2-file-upload";
 import { Router } from "@angular/router";
+import { HttpHeaders } from "@angular/common/http";
 
 @Component({
     selector:'addquestion',
