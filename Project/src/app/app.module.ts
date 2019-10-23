@@ -26,7 +26,6 @@ import { AssignTestComponent } from './app.assigntestcomponent';
 import { UpdateAdminComponent } from './app.updateadmincomponent';
 import { ListUserComponent } from './app.listusercomponent';
 import { GiveTestComponent } from './app.givetestcomponent';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DeleteQuestion } from './app.deletequestioncomponent';
 import { UpdateQuestion } from './app.updatequestion';
 import { ShowQuestion } from './app.showquestioncomponent';
@@ -63,7 +62,7 @@ const routes:Routes = [
 
 @NgModule({
     imports: [
-        BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, CommonModule, RouterModule.forRoot(routes), FileUploadModule,PdfViewerModule,NgxPaginationModule,
+        BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, CommonModule, RouterModule.forRoot(routes), FileUploadModule,NgxPaginationModule,
         ConfirmationPopoverModule.forRoot({
         confirmButtonType:'danger'})
     ],

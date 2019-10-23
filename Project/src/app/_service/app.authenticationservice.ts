@@ -32,7 +32,7 @@ export class AuthenticationService {
     }
   
     register(name,password){
-        return this.httpClient.post<any>("http://localhost:9088/register",{"username":name,"password":password,"isAdmin":"false","isDeleted":"false"}).subscribe((data)=>alert("Successfully Registered!"));
+        return this.httpClient.post<any>("http://localhost:9088/register",{"username":name,"password":password,"isAdmin":"false","isDeleted":"false"}).subscribe((data)=>alert("Successfully Registered!"), error=>{alert(error.error);});
     }
 
     checkRole(name:string){
