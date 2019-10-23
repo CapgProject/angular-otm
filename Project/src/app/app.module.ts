@@ -19,6 +19,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DeleteQuestion } from './app.deletequestioncomponent';
 import { UpdateQuestion } from './app.updatequestion';
 import { ShowQuestion } from './app.showquestioncomponent';
+import { LogoutComponent } from './app.logoutcomponent';
 import { GetResultComponent } from './app.getresultcomponent';
 import { ResultPdfComponent } from './app.resultpdfcomponent';
 
@@ -36,6 +37,7 @@ const routes:Routes = [
     { path: 'deletequestion', component:DeleteQuestion},
     { path: 'showquestion', component: ShowQuestion},
     { path: 'updatequestion', component:UpdateQuestion},
+    { path: 'logout', component:LogoutComponent},
     { path: 'getresult', component:GetResultComponent},
     { path: 'resultpdf', component:ResultPdfComponent}
 ];
@@ -46,7 +48,8 @@ const routes:Routes = [
         BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, CommonModule, RouterModule.forRoot(routes), FileUploadModule,PdfViewerModule
     ],
     declarations: [
-        AppComponent, UserHomeComponent, UpdateUserComponent, AddQuestion, AdminHomeComponent, HomeComponent, AssignTestComponent,UpdateAdminComponent, ListUserComponent, GiveTestComponent, ShowQuestion, DeleteQuestion, UpdateQuestion,GetResultComponent, ResultPdfComponent
+
+        AppComponent, UserHomeComponent, UpdateUserComponent, AddQuestion, AdminHomeComponent, HomeComponent, AssignTestComponent,UpdateAdminComponent, ListUserComponent, GiveTestComponent, ShowQuestion, DeleteQuestion, UpdateQuestion,GetResultComponent, ResultPdfComponent,LogoutComponent
 		], 
 
 
