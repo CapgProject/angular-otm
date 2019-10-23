@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { UserService } from './_service/app.userservice';
 import { e } from '@angular/core/src/render3';
 import { empty } from 'rxjs';
@@ -9,9 +9,13 @@ import { Router } from '@angular/router';
     templateUrl: 'app.updateuser.html'
 })
 
-export class UpdateUserComponent {
+export class UpdateUserComponent implements OnInit{
     constructor(private router:Router,private service:UserService){
         console.log("In Constructor");
+    }
+    ngOnInit(){
+        this.user.userName = sessionStorage.getItem("username");
+        this.user.userId = sessionStorage.getItem("userId");
     }
     user:any = {userId: null, userName: null, userPassword: null};
     user_error:any = {idError:null, passwordError:null};

@@ -72,7 +72,6 @@ const routes:Routes = [
         AppComponent, UserHomeComponent, UpdateUserComponent, AddQuestion, AdminHomeComponent, HomeComponent, AssignTestComponent,UpdateAdminComponent, ListUserComponent, GiveTestComponent, ShowQuestion, DeleteQuestion, UpdateQuestion,GetResultComponent, ResultPdfComponent,LogoutComponent, AddTestComponent,ShowAllTestComponent,RemoveTestComponent,UpdateTestComponent
 		], 
 
-
     providers: [{provide:HTTP_INTERCEPTORS, useClass:BasicAuthHtppInterceptorService, multi:true}],
 
     bootstrap: [AppComponent]

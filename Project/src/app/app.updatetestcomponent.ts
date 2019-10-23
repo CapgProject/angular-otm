@@ -13,9 +13,7 @@ export class UpdateTestComponent {
     
     testId:number;
     test:Test
-    
-    
-    
+
     constructor(private service:TestService,private router:Router){
 
     }
