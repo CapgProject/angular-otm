@@ -13,15 +13,9 @@ import { RemoveTestComponent } from './app.removetestcomponent';
 import { UpdateTestComponent } from './app.updatetestcomponent';
  
 
-
-
-const myroute:Routes = [
-    
-
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import {  HTTP_INTERCEPTORS } from '@angular/common/http';
 import {FileUploadModule} from 'ng2-file-upload';
-import {Routes, RouterModule} from '@angular/router'
 import { UserHomeComponent } from './app.userhomecomponent';
 import { UpdateUserComponent } from './app.updateusercomponent';
 import { AddQuestion } from './app.addquestioncomponent';
@@ -69,16 +63,9 @@ const routes:Routes = [
 
 @NgModule({
     imports: [
-
-    ],
-    declarations: [
-        AppComponent
-		], 
-    providers: [ ],
-
         BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, CommonModule, RouterModule.forRoot(routes), FileUploadModule,PdfViewerModule,NgxPaginationModule,
         ConfirmationPopoverModule.forRoot({
-        confirmButtonType:'danger'}
+        confirmButtonType:'danger'})
     ],
     declarations: [
 
@@ -86,7 +73,7 @@ const routes:Routes = [
 		], 
 
 
-    providers: [],
+    providers: [{provide:HTTP_INTERCEPTORS, useClass:BasicAuthHtppInterceptorService, multi:true}],
 
     bootstrap: [AppComponent]
 })
