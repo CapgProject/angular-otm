@@ -34,11 +34,7 @@ export class QuestionService{
     }
 
     updateQuestion(question:any){
-        let form = new FormData();
-        form.append("questionTitle",question.questionTitle);
-        form.append("questionOptions",question.questionOptions);
-        form.append("questionMarks",question.questionMarks);
-        form.append("questionAnswer",question.questionAnswer);
-        return this.myhttp.put("http://localhost:9088/updatequestionsubmit",form);
+        console.log(question);
+        return this.myhttp.put("http://localhost:9088/updatequestionsubmit",question);
     }
 }

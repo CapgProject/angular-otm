@@ -9,8 +9,10 @@ import { Router } from "@angular/router";
     templateUrl:'app.addquestion.html'
 })
 
+
 export class AddQuestion{ 
     exFile:any;
+
     buttonVal:boolean=false;
     question:Question={
         questionId:null,
@@ -18,12 +20,16 @@ export class AddQuestion{
         questionAnswer:null,
         questionMarks:null,
         questionOptions:[],
+
         chosenAnswer:0,
+
         test:null
     };
     testid:any;
     testId:number;
+
     sMsg:string;
+
 
     changeButtonValue(value:boolean){
         if(value==true){
@@ -35,6 +41,7 @@ export class AddQuestion{
     }
 
     constructor(private service:QuestionService, private router:Router){}
+
 
     getFileDetails (e:any) {
         console.log(e.target.files);
@@ -59,6 +66,7 @@ export class AddQuestion{
             }
             );
         }
+
     }
     addThroughForm(){
         if(this.validateTestId() && this.validateTitle() && this.validateOptions() && this.validateAnswer() && this.validateMarks()){
@@ -66,6 +74,7 @@ export class AddQuestion{
         }
        
     }
+
     
     file_error = null
     error_file:boolean = false
@@ -127,6 +136,7 @@ export class AddQuestion{
                 return true;
             }
         }
+
     }
 
     error_answer:string=null;

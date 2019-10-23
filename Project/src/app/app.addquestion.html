@@ -126,7 +126,7 @@
                             Enter the Test Id:
                         </div>
                         <div class="col-md-4 col-lg-4">
-                            <input type="text" name="testid" [(ngModel)]="testid"/>
+                            <input type="number" name="testid" [(ngModel)]="testid"/>
                         </div>
                     </div>
                     </div>
@@ -157,35 +157,45 @@
                         <div class="row">
                             <div class="text-center col-md-6 col-lg-6">Enter Test Id:</div>
                             <div class="col-md-4 col-lg-4">
-                                <input type="text" name="testId" [(ngModel)]="testId" />
+                                <input type="number" name="testId" [(ngModel)]="testId" (focusout)="validateTestId()" />
+                                <br>
+                                <span *ngIf = "error_id!=null" style="color:red">{{error_id}}</span>
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="text-center col-md-6 col-lg-6">Question Title:</div>
                             <div class="col-md-4 col-lg-4">
-                                <input type="text" name="questiontitle" [(ngModel)]="question.questionTitle" />
+                                <input type="text" name="questiontitle" [(ngModel)]="question.questionTitle" (focusout)="validateTitle()" />
+                                <br>
+                                <span *ngIf = "error_title!=null" style="color:red">{{error_title}}</span>
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="text-center col-md-6 col-lg-6">Question Options :</div>
                             <div class="col-md-4 col-lg-4">
-                                <input type="text" name="questionoptions" [(ngModel)]="question.questionOptions" />
+                                <input type="text" name="questionoptions" [(ngModel)]="question.questionOptions" (focusout)="validateOptions()" />
+                                <br>
+                                <span *ngIf = "error_options!=null" style="color:red">{{error_options}}</span>
                             </div>
                         </div>
                         <br>
                         <div class="row">
-                            <div class="text-center col-md-6 col-lg-6">Question Answer :</div>
+                            <div class="text-center col-md-6 col-lg-6">Question Correct Answer :</div>
                             <div class="col-md-4 col-lg-4">
-                                <input type="text" name="questionanswer" [(ngModel)]="question.questionAnswer" />
+                                <input type="number" name="questionanswer" [(ngModel)]="question.questionAnswer" (focusout)="validateAnswer()" />
+                                <br>
+                                <span *ngIf = "error_answer!=null" style="color:red">{{error_answer}}</span>
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="text-center col-md-6 col-lg-6">Question Marks :</div>
                             <div class="col-md-4 col-lg-4">
-                                <input type="text" name="questionmarks" [(ngModel)]="question.questionMarks" />
+                                <input type="number" name="questionmarks" [(ngModel)]="question.questionMarks" (focusout)="validateMarks()" />
+                                <br>
+                                <span *ngIf = "error_marks!=null" style="color:red">{{error_marks}}</span>
                             </div>
                         </div>
                         <br><br>

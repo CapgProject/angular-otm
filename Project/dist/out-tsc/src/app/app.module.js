@@ -10,6 +10,7 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./app.component");
 var forms_1 = require("@angular/forms");
+var app_productcomponent_1 = require("./app.productcomponent");
 var http_1 = require("@angular/common/http");
 var ng2_file_upload_1 = require("ng2-file-upload");
 var router_1 = require("@angular/router");
@@ -45,6 +46,7 @@ var routes = [
     { path: 'updatequestion', component: app_updatequestion_1.UpdateQuestion },
     { path: 'getresult', component: app_getresultcomponent_1.GetResultComponent },
     { path: 'resultpdf', component: app_resultpdfcomponent_1.ResultPdfComponent }
+
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -56,6 +58,7 @@ var AppModule = /** @class */ (function () {
             ],
             declarations: [
                 app_component_1.AppComponent, app_userhomecomponent_1.UserHomeComponent, app_updateusercomponent_1.UpdateUserComponent, app_addquestioncomponent_1.AddQuestion, app_adminhomecomponent_1.AdminHomeComponent, app_homeComponent_1.HomeComponent, app_assigntestcomponent_1.AssignTestComponent, app_updateadmincomponent_1.UpdateAdminComponent, app_listusercomponent_1.ListUserComponent, app_givetestcomponent_1.GiveTestComponent, app_showquestioncomponent_1.ShowQuestion, app_deletequestioncomponent_1.DeleteQuestion, app_updatequestion_1.UpdateQuestion, app_getresultcomponent_1.GetResultComponent, app_resultpdfcomponent_1.ResultPdfComponent
+
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]
