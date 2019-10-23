@@ -48,7 +48,9 @@
                         Enter the Question Id:
                     </div>
                     <div class="col-md-4 col-lg-4">
-                        <input type="number" name="questionid" placeholder="Enter Question Id" [(ngModel)]="questionId">
+                        <input type="number" name="questionid" placeholder="Enter Question Id" [(ngModel)]="questionId" (focusout)="validateQuestionId()">
+                        <br>
+                        <span style = 'color: red;' *ngIf = "error_id!=null">{{error_id}}</span>
                     </div>
                 </div>
                 <br>
@@ -56,8 +58,18 @@
                     <div class="text-center col-md-6 col-lg-6">
                     </div>
                     <div class="col-md-4 col-lg-4">
-                        <button type="submit" class = "btn btn-primary" (click)="deleteQuestion(questionId)">Delete Question</button>
-                    </div>
+                        <!-- <button type="submit" class = "btn btn-primary" (click)="deleteQuestion()">Delete Question</button> -->
+                        <div><input type="button" 
+                          class="btn btn-default"
+                           mwlConfirmationPopover
+                           [popoverTitle]="popoverTitle"
+                           [popoverMessage]="popoverMessage +' ' +questionId"
+                           placement="right"
+                           (confirm)="deleteQuestion()"
+                           (cancel)="cancelClicked = true"
+                           value="DELETE"/>
+                          </div>
+                      </div>
                 </div>
                 <br>
             </form>   

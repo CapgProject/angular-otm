@@ -127,16 +127,20 @@
                             <div class="modal-body mx-4">
                                 <!--Body-->
                                 <div class="md-form mb-5">
-                                    <input id="username" name="username" type="text" [(ngModel)]="username" class="form-control" />
+                                    <input id="username" name="username" type="text" [(ngModel)]="username" class="form-control" (focusout)="validateUsername()" />
+                                    <span style = 'color: red;' *ngIf = "error_name!=null">{{error_name}}</span>
+                                    <br>
                                     <label data-error="wrong" data-success="right" for="Form-email1">Your
                                         Username</label> <span id="username_error_message" class="error"></span>
                                 </div>
     
                                 <div class="md-form pb-3">
-                                    <input id="password" name="password" type="password" [(ngModel)]="password" class="form-control" />
+                                    <input id="password" name="password" type="password" [(ngModel)]="password" class="form-control" (focusout)="validatePassword()" />
+                                    <span style = 'color: red;' *ngIf = "error_password!=null">{{error_password}}</span>
+                                    <br>
                                     <label data-error="wrong" data-success="right" for="Form-pass1">Your
                                         password</label> <span id="password_error_message" class="error"></span>
-                                    <p class="font-small blue-text d-flex justify-content-end">
+                                        <p class="font-small blue-text d-flex justify-content-end">
                                         Forgot <a href="#" class="blue-text ml-1"> Password?</a>
                                     </p>
                                 </div>
@@ -195,13 +199,17 @@
                             <div class="modal-body mx-4">
                                 <!--Body-->
                                 <div class="md-form mb-5">
-                                    <input name="usernametwo" type="text" [(ngModel)]="name" class="form-control" />
+                                    <input name="usernametwo" type="text" [(ngModel)]="name" class="form-control" (focusout)="validateName()" />
+                                    <span style = 'color: red;' *ngIf = "name_error!=null">{{name_error}}</span>
+                                    <br>
                                     <label data-error="wrong" data-success="right" for="Form-email1">Your
                                         Username</label> <span id="username_error" class="error"></span>
                                 </div>
     
                                 <div class="md-form pb-3">
-                                    <input name="userpassword" type="password" [(ngModel)]="registerpassword" class="form-control" />
+                                    <input name="userpassword" type="password" [(ngModel)]="registerpassword" class="form-control" (focusout)="validatePass()" />
+                                    <span style = 'color: red;' *ngIf = "password_error!=null">{{password_error}}</span>
+                                    <br>
                                     <label data-error="wrong" data-success="right" for="Form-pass1">Your
                                         password</label> <span id="password_error" class="error"></span>
                                 </div>
