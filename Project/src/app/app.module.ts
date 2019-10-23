@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {FileUploadModule} from 'ng2-file-upload';
 import {Routes, RouterModule} from '@angular/router'
 import { UserHomeComponent } from './app.userhomecomponent';
@@ -20,8 +20,10 @@ import { DeleteQuestion } from './app.deletequestioncomponent';
 import { UpdateQuestion } from './app.updatequestion';
 import { ShowQuestion } from './app.showquestioncomponent';
 import { LogoutComponent } from './app.logoutcomponent';
+import { BasicAuthHtppInterceptorService } from './_service/app.basicauthinterceptorservice';
 import { GetResultComponent } from './app.getresultcomponent';
 import { ResultPdfComponent } from './app.resultpdfcomponent';
+
 
 const routes:Routes = [
     { path: '', redirectTo: 'home', pathMatch:'full'},
@@ -53,7 +55,8 @@ const routes:Routes = [
 		], 
 
 
-    providers: [ ],
+    providers: [],
+
     bootstrap: [AppComponent]
 })
 

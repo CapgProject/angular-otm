@@ -1,12 +1,15 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
     providedIn:'root'
 })
 export class QuestionService{
-
-    constructor(private myhttp:HttpClient){}
+     
+    headers:any;
+    constructor(private myhttp:HttpClient){
+        this.headers = new HttpHeaders().set("Authorization", sessionStorage.getItem("token"));
+    }
 
     addQuestionExcel(form){
         return this.myhttp.post("http://localhost:9088/addquestionsubmit",form);
@@ -18,7 +21,7 @@ export class QuestionService{
         form.append("questionOptions",question.questionOptions);
         form.append("questionAnswer",question.questionAnswer);
         form.append("questionMarks",question.questionMarks);
-        return this.myhttp.post("http://localhost:9088/addsinglequestion?testid="+id,form);
+        return this.myhttp.post("http://localhost:9088/addsinglequestion?testid="+id,form,{headers:this.headers});
     }
 
     deleteQuestion(id:number){
@@ -26,7 +29,7 @@ export class QuestionService{
     }
 
     showAllQuestions(id:number){
-        return this.myhttp.get("http://localhost:9088/listquestionsubmit?testId="+id);
+        return this.myhttp.get("http://localhost:9088/listquestionsubmit?testId="+id, {headers:this.headers});
     }
 
     searchQuestion(id:number){
