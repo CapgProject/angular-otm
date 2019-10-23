@@ -109,7 +109,7 @@
                 aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <!--Content-->
-                    <form id="login" action="/login" method="post" modelAttribute="user">
+                    <form id="login" action="/login" method="post">
                         <div class="modal-content form-elegant">
                             <!--Header-->
                             <div class="modal-header text-center">
@@ -142,7 +142,7 @@
                                 </div>
     
                                 <div class="text-center mb-3">
-                                    <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a" (click)="checkLogin()">Signin</button>
+                                    <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a" (click)="checkLogin();">Signin</button>
                                 </div>
                                 <p
                                     class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">
@@ -195,21 +195,18 @@
                             <div class="modal-body mx-4">
                                 <!--Body-->
                                 <div class="md-form mb-5">
-                                    <input id="usernametwo" type="text" path="userName"
-                                        class="form-control" />
+                                    <input name="usernametwo" type="text" [(ngModel)]="name" class="form-control" />
                                     <label data-error="wrong" data-success="right" for="Form-email1">Your
                                         Username</label> <span id="username_error" class="error"></span>
                                 </div>
     
                                 <div class="md-form pb-3">
-                                    <input id="userpassword" type="password" path="userPassword"
-                                        class="form-control" />
+                                    <input name="userpassword" type="password" [(ngModel)]="registerpassword" class="form-control" />
                                     <label data-error="wrong" data-success="right" for="Form-pass1">Your
                                         password</label> <span id="password_error" class="error"></span>
                                 </div>
                                 <div class="text-center mb-3">
-                                    <button type="submit"
-                                        class="btn blue-gradient btn-block btn-rounded z-depth-1a">Register</button>
+                                    <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a" (click)="Register()">Register</button>
                                 </div>
                                 <p
                                     class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">

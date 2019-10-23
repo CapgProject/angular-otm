@@ -19,6 +19,7 @@ import { GiveTestComponent } from './app.givetestcomponent';
 import { DeleteQuestion } from './app.deletequestioncomponent';
 import { UpdateQuestion } from './app.updatequestion';
 import { ShowQuestion } from './app.showquestioncomponent';
+import { LogoutComponent } from './app.logoutcomponent';
 
 const routes:Routes = [
     { path: '', redirectTo: 'home', pathMatch:'full'},
@@ -33,9 +34,8 @@ const routes:Routes = [
     { path: 'givetest', component:GiveTestComponent },
     { path: 'deletequestion', component:DeleteQuestion},
     { path: 'showquestion', component: ShowQuestion},
-    { path: 'updatequestion', component:UpdateQuestion}
-    
-
+    { path: 'updatequestion', component:UpdateQuestion},
+    { path: 'logout', component:LogoutComponent}
 ];
 
 
@@ -44,7 +44,7 @@ const routes:Routes = [
         BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, CommonModule, RouterModule.forRoot(routes), FileUploadModule
     ],
     declarations: [
-        AppComponent, UserHomeComponent, UpdateUserComponent, AddQuestion, AdminHomeComponent, HomeComponent, AssignTestComponent,UpdateAdminComponent, ListUserComponent, GiveTestComponent, ShowQuestion, DeleteQuestion, UpdateQuestion
+        AppComponent, UserHomeComponent, UpdateUserComponent, AddQuestion, AdminHomeComponent, HomeComponent, AssignTestComponent,UpdateAdminComponent, ListUserComponent, GiveTestComponent, ShowQuestion, DeleteQuestion, UpdateQuestion, LogoutComponent
 		], 
 
 

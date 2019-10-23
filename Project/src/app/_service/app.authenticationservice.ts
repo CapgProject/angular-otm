@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 
 export class User{
     
@@ -20,10 +19,8 @@ export class AuthenticationService {
   constructor(private httpClient:HttpClient) {}
 
     authenticate(username, password) {
-        alert(password);
         return this.httpClient.post<any>('http://localhost:9088/authenticate',{username,password}).subscribe(
             userData => {
-                alert("hi");
                 sessionStorage.setItem('username',username);
                 let tokenStr= 'Bearer '+userData.token;
                 sessionStorage.setItem('token', tokenStr);
@@ -33,14 +30,23 @@ export class AuthenticationService {
       );
     }
   
+    register(name,password){
+        return this.httpClient.post<any>("http://localhost:9088/register",{"username":name,"password":password,"isAdmin":"false","isDeleted":"false"}).subscribe((data)=>alert("Successfully Registered!"));
+    }
+
+    checkRole(name:string){
+        return this.httpClient.get("http://localhost:9088/searchuser?name="+name);
+    }
 
     isUserLoggedIn() {
         let user = sessionStorage.getItem('username')
-        //console.log(!(user === null))
         return !(user === null)
     }
 
     logOut() {
-        sessionStorage.removeItem('username')
+        sessionStorage.removeItem('username');
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("role");
+        sessionStorage.removeItem("userId");
     }
 }

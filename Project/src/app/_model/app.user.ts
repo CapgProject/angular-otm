@@ -1,5 +1,5 @@
 export class User{
-    userId:number;
+    userId:any;
     userName:string;
     userPassword:string;
     isAdmin:boolean;
