@@ -15,11 +15,13 @@ import { AssignTestComponent } from './app.assigntestcomponent';
 import { UpdateAdminComponent } from './app.updateadmincomponent';
 import { ListUserComponent } from './app.listusercomponent';
 import { GiveTestComponent } from './app.givetestcomponent';
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DeleteQuestion } from './app.deletequestioncomponent';
 import { UpdateQuestion } from './app.updatequestion';
 import { ShowQuestion } from './app.showquestioncomponent';
 import { LogoutComponent } from './app.logoutcomponent';
+import { GetResultComponent } from './app.getresultcomponent';
+import { ResultPdfComponent } from './app.resultpdfcomponent';
 
 const routes:Routes = [
     { path: '', redirectTo: 'home', pathMatch:'full'},
@@ -35,16 +37,19 @@ const routes:Routes = [
     { path: 'deletequestion', component:DeleteQuestion},
     { path: 'showquestion', component: ShowQuestion},
     { path: 'updatequestion', component:UpdateQuestion},
-    { path: 'logout', component:LogoutComponent}
+    { path: 'logout', component:LogoutComponent},
+    { path: 'getresult', component:GetResultComponent},
+    { path: 'resultpdf', component:ResultPdfComponent}
 ];
 
 
 @NgModule({
     imports: [
-        BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, CommonModule, RouterModule.forRoot(routes), FileUploadModule
+        BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, CommonModule, RouterModule.forRoot(routes), FileUploadModule,PdfViewerModule
     ],
     declarations: [
-        AppComponent, UserHomeComponent, UpdateUserComponent, AddQuestion, AdminHomeComponent, HomeComponent, AssignTestComponent,UpdateAdminComponent, ListUserComponent, GiveTestComponent, ShowQuestion, DeleteQuestion, UpdateQuestion, LogoutComponent
+
+        AppComponent, UserHomeComponent, UpdateUserComponent, AddQuestion, AdminHomeComponent, HomeComponent, AssignTestComponent,UpdateAdminComponent, ListUserComponent, GiveTestComponent, ShowQuestion, DeleteQuestion, UpdateQuestion,GetResultComponent, ResultPdfComponent,LogoutComponent
 		], 
 
 

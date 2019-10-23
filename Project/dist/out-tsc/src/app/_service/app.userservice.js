@@ -29,7 +29,22 @@ var UserService = /** @class */ (function () {
         return this.myhttp.get("http://localhost:9088/showusers");
     };
     UserService.prototype.getQuestions = function () {
-        return this.myhttp.get("http://localhost:9088/givetest?userId=" + 1);
+        return this.myhttp.get("http://localhost:9088/givetest?userid=2");
+    };
+    UserService.prototype.submitTest = function (questions) {
+        return this.myhttp.put("http://localhost:9088/givetest", questions);
+    };
+    UserService.prototype.getResult = function () {
+        return this.myhttp.get("http://localhost:9088/getresult?userid=2");
+    };
+    UserService.prototype.resultPdf = function () {
+        var headers = new http_1.HttpHeaders();
+        headers = headers.append('Accept', 'application/pdf; charset=utf-8');
+        return this.myhttp.get('http://localhost:9088/resultpdf?userid=2', {
+            headers: headers,
+            observe: 'response',
+            responseType: 'text'
+        });
     };
     UserService = __decorate([
         core_1.Injectable({

@@ -1,5 +1,7 @@
 import { Component} from '@angular/core';
 import { UserService } from './_service/app.userservice';
+import { Router } from '@angular/router';
+
 
 @Component({
     selector: 'updateadmin',
@@ -7,31 +9,31 @@ import { UserService } from './_service/app.userservice';
 })
 
 export class UpdateAdminComponent {
-    constructor(private service:UserService){
+    constructor(private router:Router,private service:UserService){
         console.log("In Constructor");
     }
     user:any = {userId: "", userName: "", userPassword: ""};
     user_error:any = {idError:"", passwordError:""};
-    validate():boolean{
-        console.log(this.user);
-        var numbers = new RegExp(/^[0-9]+$/);
-        var password = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/i)
+    validatename():boolean{
         var name = new RegExp(/^[A-Z][A-Za-z0-9]{3,20}$/);
-        let error:boolean = false
-        if(!numbers.test(this.user.userId)){
-            this.user_error.idError = "Enter Only Numbers";
-            error = true;
-        }
-        else{
-            this.user_error.idError = "";
-        }
+        let error:boolean = false;
         if(!name.test(this.user.userName)){
             this.user_error.nameError = "First Letter should be capital with 4-20 characters"
             error  = true;
         }
         else{
-            this.user_error.nameError = "";
+            this.user_error.nameError = null;
         }
+        if(error){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    validatepassword():boolean{
+        var password = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/i)
+        let error:boolean = false;
         if(!password.test(this.user.userPassword)){
             this.user_error.passwordError = "Invalid Password Format";
             error = true;
@@ -48,8 +50,8 @@ export class UpdateAdminComponent {
     }
 
     updateAdmin(){
-        if(this.validate()){
-            this.service.updateUser(this.user).subscribe(data=>console.log(data));
+        if(this.validatename() && this.validatepassword()){
+            this.service.updateUser(this.user).subscribe(data=>{alert(data);this.router.navigate(['/admin'])},(error)=>alert(error.error));
         }
     }
 }
