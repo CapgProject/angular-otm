@@ -6,5 +6,6 @@ export class Question{
     questionAnswer:number;
     questionOptions:string[]=[];
     questionMarks:number;
+    chosenAnswer:number;
     test:Test;
 }

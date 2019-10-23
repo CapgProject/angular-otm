@@ -9,7 +9,9 @@ import { Question } from './_model/app.question';
 
 export class GiveTestComponent implements OnInit{
 
-    questions:any[] =[];
+    questions:Question[] =[];
+    num:number = 0;
+    question:Question;
     constructor(private service:UserService){
         console.log("In Constructor");
     }
@@ -17,6 +19,19 @@ export class GiveTestComponent implements OnInit{
     ngOnInit(){
         this.service.getQuestions().subscribe((data:Question[]) =>this.questions = data);
     }
+
+    nextQuestion(){
+        alert(this.questions[this.num].chosenAnswer);
+        this.num += 1;
+        if(this.num>=this.questions.length){
+            alert("Test Finished Successfully");
+            this.service.submitTest(this.questions).subscribe(data=>console.log(data));
+        }
+    }
+
+
+
+
 
 
 }

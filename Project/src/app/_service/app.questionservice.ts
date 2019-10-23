@@ -8,11 +8,8 @@ export class QuestionService{
 
     constructor(private myhttp:HttpClient){}
 
-    addQuestionExcel(id:any,file:any){
-        let form = new FormData();
-        form.append("testid",id);
-        form.append("exfile",file)
-        return this.myhttp.post("http://localhost:9088/addquestionsubmit",{"exfile":form});
+    addQuestionExcel(form){
+        return this.myhttp.post("http://localhost:9088/addquestionsubmit",form);
     }
 
     addQuestionForm(id:number, question:any){
