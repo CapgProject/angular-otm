@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Question } from "./_model/app.question";
 import { QuestionService } from "./_service/app.questionservice";
+import { Router } from "@angular/router";
 
 @Component({
     selector:'deletequestion',
@@ -8,11 +9,11 @@ import { QuestionService } from "./_service/app.questionservice";
 })
 export class DeleteQuestion implements OnInit{
 
-    constructor(private service:QuestionService){}
+    constructor(private service:QuestionService, private router:Router){}
 
     ngOnInit(){}
 
     deleteQuestion(id:number){
-        this.service.deleteQuestion(id).subscribe((data)=>console.log(data));
+        this.service.deleteQuestion(id).subscribe((success:string)=>{alert(success);this.router.navigate(['/admin']);}, error=>{alert(error.error);});
     }
 }

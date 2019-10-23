@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { QuestionService } from "./_service/app.questionservice";
 import { Question } from "./_model/app.question";
 
@@ -6,14 +6,11 @@ import { Question } from "./_model/app.question";
     selector:'showquestion',
     templateUrl:'app.showquestion.html'
 })
-export class ShowQuestion implements OnInit{
+export class ShowQuestion{
     questions:Question[];
     constructor(private service:QuestionService){}
- 
-    ngOnInit(){}
 
     showAllQuestions(id:number){
-        this.service.showAllQuestions(id).subscribe((data:Question[])=>this.questions=data);
-        //console.log(this.questions.questionId); 
+        this.service.showAllQuestions(id).subscribe((data:Question[])=>{this.questions=data}, error=>{alert(error.error)});
     }
 }
