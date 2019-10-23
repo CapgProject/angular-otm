@@ -50,15 +50,10 @@
 						Name:</div>
 					<div class="col-md-4 col-lg-4">
 						<input type="text" class="form-control" name="testName" [(ngModel)]="model.testName" 
-					#testName="ngModel" [ngClass]="{'is-invalid':f.submitted && testName.invalid}"	[ngModelOptions]="{standalone: true}" path="testName"
-							placeholder="Enter Test Name" id="name"  required (focusout) = "validate()" />
-							<span *ngIf = 'test_error.nameError' class="error" style="color: red">{{test_error.nameError}}</span>
-							
-							
-							<div class="invalid-feedback">
-									<div>Test Name  is required</div>
-							</div>
-						
+						[ngModelOptions]="{standalone: true}" path="testName" placeholder="Enter Test Name" 
+						id="name"   (focusout)="validateTestName()" />
+							<span *ngIf ="nameError!=null" class="error" style="color: red">{{nameError}}</span>
+
 						
 					</div>
 				
@@ -70,14 +65,12 @@
 						Duration:</div>
 					<div class="col-md-4 col-lg-4">
 						<input type="text" class="form-control" name="testDuration" [(ngModel)]="model.testDuration" 
-						#testDuration="ngModel" [ngClass]="{'is-invalid':f.submitted && testDuration.invalid}"
-						[ngModelOptions]="{standalone: true}" path="testDuration" placeholder="(HH:MM:SS)"
-							id="duration"  required (focusout)="validate()" />
-							<span *ngIf = 'test_error.durationError' class="error" style="color: red">{{test_error.nameError}}</span>
+							[ngModelOptions]="{standalone: true}" path="testDuration" placeholder="(HH:MM:SS)"
+							id="duration" (focusout)="validateTestDuration()"  />
 							
-								<div class="invalid-feedback">
-								<div>Test Duration is required</div>
-							</div>
+							<span *ngIf ="durationError!=null" class="error" style="color: red">{{durationError}}</span>
+
+							
 						
 					</div>
 				
@@ -88,14 +81,12 @@
 						Start time:</div>
 					<div class="col-md-4 col-lg-4">
 						<input type="datetime-local" class="form-control" name="startTime"
-						[(ngModel)]="model.startTime" #startTime="ngModel" 
-						[ngClass]="{'is-invalid':f.submitted && startTime.invalid}"
-						[ngModelOptions]="{standalone: true}" path="startTime" id="startTime" required (focusout)="validate()"/>
-						<span *ngIf ='test_error.startTimeError' class="error" style="color:red">{{test_error.startTimeError}}</span>
+						[(ngModel)]="model.startTime"  
+						[ngModelOptions]="{standalone: true}" path="startTime" id="startTime"  (focusout)=" validateStartTime()"/>
 						
-						<div class="invalid-feedback">
-							<div>Start Time is required</div>
-						</div>
+						<span *ngIf ="startTimeError!=null" class="error" style="color: red">{{startTimeError}}</span>
+
+						
 					</div>
 				</div>
 				<br>
@@ -104,12 +95,10 @@
 						End time:</div>
 					<div class="col-md-4 col-lg-4">
 						<input type="datetime-local" class="form-control" name="endTime"
-						[(ngModel)]="model.endTime" #endTime="ngModel" 
-						[ngClass]="{'is-invalid':f.submitted && endTime.invalid}"
-						[ngModelOptions]="{standalone: true}" path="endTime" id="endTime" required/>
-							<div class="invalid-feedback">
-								<div>End Time is required</div>
-							</div>
+						[(ngModel)]="model.endTime" 
+						[ngModelOptions]="{standalone: true}" path="endTime" id="endTime"  (focusout)="validateEndTime()"/>
+						<span *ngIf ="endTimeError!=null" class="error" style="color: red">{{endTimeError}}</span>
+
 					</div>
 				</div>
 				<br>
