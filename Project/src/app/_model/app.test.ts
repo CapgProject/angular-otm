@@ -1,9 +1,11 @@
-import { Time } from "@angular/common";
+import { Time} from "@angular/common";
+
+
 
 export class Test{
     testId:number;
-    testName:String;
-    testDuration:Time;
+    testName:string;
+    testDuration:any;
     startTime:any;
     endTime:any;
 }
