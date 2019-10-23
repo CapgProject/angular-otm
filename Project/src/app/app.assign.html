@@ -48,8 +48,8 @@
             Enter the Test Id:
           </div>
           <div class="col-md-4 col-lg-4">
-            <input type="number" id="test_id" name="testid" [(ngModel)] = "assign.testId" placeholder="Enter Test Id" class="form-control" >
-             <span class="error" id="testid_error_message" style="color:red"></span>
+            <input type="number" id="test_id" name="testid" [(ngModel)] = "assign.testId" placeholder="Enter Test Id" class="form-control" (focusout)= "validateTestId()">
+             <span class="error" id="testid_error_message" style="color:red" *ngIf = "testIdError">{{testIdError}}</span>
              <span style="color:red"> </span>
           </div>
         </div>
@@ -58,8 +58,8 @@
             Enter the User Id:
           </div>
           <div class="col-md-4 col-lg-4">
-            <input type="number" id="user_id" name="userid" [(ngModel)] = "assign.userId" placeholder="Enter User Id" class="form-control" >
-            <span class="error" id="userid_error_message" style="color:red"></span>
+            <input type="number" id="user_id" name="userid" [(ngModel)] = "assign.userId" placeholder="Enter User Id" class="form-control" (focusout) = "validateUserId()">
+            <span class="error" id="userid_error_message" style="color:red" *ngIf = "userIdError">{{userIdError}}</span>
           </div>
         </div>
         <div class = "row">

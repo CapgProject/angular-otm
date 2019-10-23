@@ -24,7 +24,7 @@ export class UserService{
     }
 
     getQuestions(){
-        return this.myhttp.get("http://localhost:9088/givetest?userid=2");
+        return this.myhttp.get("http://localhost:9088/givetest?userid="+ sessionStorage.getItem("userId"));
     }
 
     submitTest(questions:any[]){
@@ -32,11 +32,11 @@ export class UserService{
     }
 
     getResult(){
-        return this.myhttp.get("http://localhost:9088/getresult?userid=2");
+        return this.myhttp.get("http://localhost:9088/getresult?userid="+ sessionStorage.getItem("userId"));
     }
 
     resultPdf(){
-        return this.myhttp.get('http://localhost:9088/resultpdf?userid=2', {
+        return this.myhttp.get('http://localhost:9088/resultpdf?userid='+ sessionStorage.getItem("userId"), {
         responseType: 'blob'
         });
     }

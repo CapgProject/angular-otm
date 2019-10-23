@@ -65,10 +65,11 @@
                 <th>User Id</th>
                 <th>User Name</th>
             </tr>
-            <tr *ngFor = "let user of users">
+            <tr *ngFor = "let user of users | paginate: { itemsPerPage:5, currentPage: p}">
                 <td>{{user.userId}}</td>
                 <td>{{user.userName}}</td>
             </tr>
+            <pagination-controls (pageChange)="p = $event" style="width: 100%;"></pagination-controls>
         </table>
       </div>
     </section>

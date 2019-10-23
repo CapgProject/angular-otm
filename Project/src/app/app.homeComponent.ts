@@ -129,6 +129,7 @@ export class HomeComponent {
         }
         else{
             sessionStorage.setItem('role',"user");
+            sessionStorage.setItem("userId",this.user.userId);
             this.invalidLogin = false;
             this.router.navigate(['/user']).then(() => {
                 window.location.reload();
