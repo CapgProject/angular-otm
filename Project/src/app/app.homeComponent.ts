@@ -49,11 +49,11 @@ export class HomeComponent {
            
         }
         else{
+            sessionStorage.setItem('role',"user");
+            this.invalidLogin = false;
             this.router.navigate(['/user']).then(() => {
                 window.location.reload();
               });
-            sessionStorage.setItem('role',"user");
-            this.invalidLogin = false;
         }
     }
 }

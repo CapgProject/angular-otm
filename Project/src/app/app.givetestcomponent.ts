@@ -21,7 +21,6 @@ export class GiveTestComponent implements OnInit{
     }
 
     nextQuestion(){
-        alert(this.questions[this.num].chosenAnswer);
         this.num += 1;
         if(this.num>=this.questions.length){
             alert("Test Finished Successfully");

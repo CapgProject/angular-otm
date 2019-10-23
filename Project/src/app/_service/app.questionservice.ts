@@ -21,7 +21,7 @@ export class QuestionService{
         form.append("questionOptions",question.questionOptions);
         form.append("questionAnswer",question.questionAnswer);
         form.append("questionMarks",question.questionMarks);
-        return this.myhttp.post("http://localhost:9088/addsinglequestion?testid="+id,form,{headers:this.headers});
+        return this.myhttp.post("http://localhost:9088/addsinglequestion?testid="+id,form);
     }
 
     deleteQuestion(id:number){
@@ -29,7 +29,7 @@ export class QuestionService{
     }
 
     showAllQuestions(id:number){
-        return this.myhttp.get("http://localhost:9088/listquestionsubmit?testId="+id, {headers:this.headers});
+        return this.myhttp.get("http://localhost:9088/listquestionsubmit?testId="+id);
     }
 
     searchQuestion(id:number){

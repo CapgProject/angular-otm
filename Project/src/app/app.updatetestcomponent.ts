@@ -97,7 +97,7 @@ export class UpdateTestComponent {
 
     updateTest(){
        if(this.validateTestName() && this.validateTestDuration() && this.validateStartTime() && this.validateEndTime()){
-        this.service.updateTest(this.test).subscribe((data)=>console.log(data));
+        this.service.updateTest(this.test).subscribe((data)=>{alert(data);this.router.navigate(['/admin']);},error=>alert(error.error));
         //this.service.updateTest(this.test).subscribe((success:string)=>{alert(success);this.router.navigate(['/admin']);},error=>{alert(error.error);})
        }
     }

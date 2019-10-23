@@ -15,9 +15,7 @@ export class AddTestComponent {
   
    
 
-    constructor(private service:TestService,private router:Router){
-            
-    } 
+    constructor(private service:TestService,private router:Router){} 
     nameError="";
     validateTestName(){
       var name = new RegExp(/^[A-Z][A-Za-z 0-9]{3,20}$/);
@@ -90,12 +88,12 @@ export class AddTestComponent {
    
 
     addTest():any{
-      if(this.validateTestName() && this.validateTestDuration && this.validateStartTime && this.validateEndTime){}
-   if( this.model.testName!=null && this.model.testDuration!=null && this.model.startTime!=null && this.model.endTime!=null)
-        
-      //  this.service.addTest(this.model).subscribe(data=>console.log(data));
-     this.service.addTest(this.model).subscribe((success:string)=>{alert(success);this.router.navigate(['/admin']);},error=>{alert(error.error);})
-   // this.service.addTest(this.model).subscribe(data=>console.log(data));
+      if(this.validateTestName() && this.validateTestDuration && this.validateStartTime && this.validateEndTime){
+        if( this.model.testName!=null && this.model.testDuration!=null && this.model.startTime!=null && this.model.endTime!=null)
+
+          this.service.addTest(this.model).subscribe((success)=>{alert(success);this.router.navigate(['/admin']);},error=>{alert(error.error);})
+
+      }
     }
     }
 

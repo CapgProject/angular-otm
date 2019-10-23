@@ -52,20 +52,12 @@ export class AddQuestion{
         this.validateExcel();
       }
     uploadFiles () {
-        if(this.validateExcel()){
+        if(this.validateExcel() && this.validateId()){
             const frmData = new FormData();
-            
             frmData.append("exfile", this.exFile);
             frmData.append("testid", this.testid);
             this.service.addQuestionExcel(frmData).subscribe(
-            data => {
-                alert(data);
-                this.router.navigate['/admin'];
-            },
-            error=>{
-                alert(error.error);
-            }
-            );
+            success => {alert(success); this.router.navigate(['/admin']);}, error=>{ alert(error.error); });
         }
 
     }
@@ -76,6 +68,17 @@ export class AddQuestion{
        
     }
 
+    iderror:string=null;
+    validateId():boolean{
+        if(this.testid != null){
+            this.iderror = null;
+            return true;
+        }
+        else{
+            this.iderror = "Test Id field cannot be empty!";
+            return false;
+        }
+    }
     
     file_error = null
     error_file:boolean = false

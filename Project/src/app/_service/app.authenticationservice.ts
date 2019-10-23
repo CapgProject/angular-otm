@@ -21,9 +21,10 @@ export class AuthenticationService {
     authenticate(username, password) {
         return this.httpClient.post<any>('http://localhost:9088/authenticate',{username,password}).subscribe(
             userData => {
-                sessionStorage.setItem('username',username);
                 let tokenStr= 'Bearer '+userData.token;
                 sessionStorage.setItem('token', tokenStr);
+                sessionStorage.setItem('username',username);
+                
                 return userData;
             }
   
