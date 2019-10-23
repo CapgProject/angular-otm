@@ -11,11 +11,8 @@ export class QuestionService{
         this.headers = new HttpHeaders().set("Authorization", sessionStorage.getItem("token"));
     }
 
-    addQuestionExcel(id:any,file:any){
-        let form = new FormData();
-        form.append("testid",id);
-        form.append("exfile",file)
-        return this.myhttp.post("http://localhost:9088/addquestionsubmit",{"exfile":form});
+    addQuestionExcel(form){
+        return this.myhttp.post("http://localhost:9088/addquestionsubmit",form);
     }
 
     addQuestionForm(id:number, question:any){

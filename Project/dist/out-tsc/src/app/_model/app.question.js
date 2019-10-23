@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var Question = /** @class */ (function () {
     function Question() {
+        this.questionOptions = [];
     }
     return Question;
 }());

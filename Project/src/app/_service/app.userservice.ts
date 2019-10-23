@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
     providedIn:'root'
@@ -25,6 +25,20 @@ export class UserService{
 
     getQuestions(){
         return this.myhttp.get("http://localhost:9088/givetest?userid=2");
+    }
+
+    submitTest(questions:any[]){
+        return this.myhttp.put("http://localhost:9088/givetest",questions);
+    }
+
+    getResult(){
+        return this.myhttp.get("http://localhost:9088/getresult?userid=2");
+    }
+
+    resultPdf(){
+        return this.myhttp.get('http://localhost:9088/resultpdf?userid=2', {
+        responseType: 'blob'
+        });
     }
 
 }
