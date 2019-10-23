@@ -41,24 +41,46 @@ export class AddQuestion{
         for (var i = 0; i < e.target.files.length; i++) { 
             this.exFile = e.target.files[i];
           }
+        this.validateExcel();
       }
-      uploadFiles () {
-        const frmData = new FormData();
-        
-        frmData.append("exfile", this.exFile);
-        frmData.append("testid", this.testid);
-        this.service.addQuestionExcel(frmData).subscribe(
-          data => {
-            this.sMsg = data as string;
-            console.log (this.sMsg);
-          }
-        );
+    uploadFiles () {
+        if(this.validateExcel()){
+            const frmData = new FormData();
+            
+            frmData.append("exfile", this.exFile);
+            frmData.append("testid", this.testid);
+            this.service.addQuestionExcel(frmData).subscribe(
+            data => {
+                alert(data);
+                this.router.navigate['/admin'];
+            },
+            error=>{
+                alert(error.error);
+            }
+            );
+        }
     }
     addThroughForm(){
         if(this.validateTestId() && this.validateTitle() && this.validateOptions() && this.validateAnswer() && this.validateMarks()){
             this.service.addQuestionForm(this.testId, this.question).subscribe((success:string)=>{alert(success);this.router.navigate(['/admin']);},error=>{alert(error.error);})
         }
        
+    }
+    
+    file_error = null
+    error_file:boolean = false
+    validateExcel():boolean{
+        var filename = this.exFile.name;
+		var extension = filename.substr(filename.lastIndexOf(".")+1);
+		if(extension != "xlsx"){
+            this.error_file = true;
+            this.file_error = "The extension must be .xlsx";
+            return false;
+        }
+		else{
+            this.file_error = null
+            return true;
+        }
     }
 
     error_id:string=null;

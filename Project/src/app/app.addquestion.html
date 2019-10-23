@@ -136,7 +136,8 @@
                             Input File:
                         </div>
                         <div class="col-md-4 col-lg-4">
-                            <input  type= "file" id = "exfile"  (change)="getFileDetails($event)" accept=".xlsx"/>
+                            <input  type= "file" id = "exfile" (change)="getFileDetails($event)" accept=".xlsx"/><br>
+                            <span style = 'color: red;' *ngIf = "file_error">{{file_error}}</span>
                         </div>
                     </div>
                     <br>    
